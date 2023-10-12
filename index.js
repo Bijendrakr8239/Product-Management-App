@@ -96,7 +96,7 @@ app.delete('/products/:productID', (req, res) => {
       .catch(err => res.status(400).json(err));
   });
   app.use(express.static(path.join(__dirname, 'public')));
-const port = process.env.PORT
+const port = process.env.PORT||3000
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

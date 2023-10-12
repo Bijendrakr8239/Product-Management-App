@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const priceInput = document.getElementById('priceInput');
     const ratingInput = document.getElementById('ratingInput');
   
-    fetch('http://localhost:3000/products')
+    fetch('https://product-management-app-production.up.railway.app/products')
       .then((response) => response.json())
       .then((products) => {
         function filterProducts() {
