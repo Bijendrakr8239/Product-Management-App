@@ -2,21 +2,30 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-mongoose.connect('mongodb+srv://Bijendra:12345@cluster0.cnfjai5.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() =>
-  console.log("connected db"))
-  .catch(err => console.log(err));
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => {
+    console.log('Connected to MongoDB');
+})
+.catch((err) => {
+    console.error('Error connecting to MongoDB:', err);
+});
+
 
 const Product = require('./models/Product'); 
 app.get('/', (req, res) => {
     res.redirect('/products.html');
 });
+;
 
 app.post('/products', (req, res) => {
     const productData = req.body;
@@ -87,7 +96,7 @@ app.delete('/products/:productID', (req, res) => {
       .catch(err => res.status(400).json(err));
   });
   app.use(express.static(path.join(__dirname, 'public')));
-const port = process.env.PORT || 3000;
+const port = process.env.PORT
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
