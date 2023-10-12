@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             company: document.getElementById('productCompany').value
         };
 
-        fetch(`https://product-management-app-production.up.railway.app/products/${productID}`, {
+        fetch(`http://localhost:3000/products/${productID}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

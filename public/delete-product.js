@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const productID = document.getElementById('productID').value;
 
-        fetch(`https://product-management-app-production.up.railway.app/products/${productID}`, {
+        fetch(`http://localhost:3000/products/${productID}`, {
             method: 'DELETE',
         })
         .then((response) => {

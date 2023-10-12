@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('https://product-management-app-production.up.railway.app/products', {
+            const response = await fetch('http://localhost:3000/products', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
