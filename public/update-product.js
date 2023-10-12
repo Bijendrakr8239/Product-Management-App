@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
             company: document.getElementById('productCompany').value
         };
 
-        // Send a PUT request to update the product details
         fetch(`http://localhost:3000/products/${productID}`, {
             method: 'PUT',
             headers: {

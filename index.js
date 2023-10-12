@@ -21,7 +21,6 @@ app.get('/', (req, res) => {
 app.post('/products', (req, res) => {
     const productData = req.body;
     
-    // Create a new product using your Mongoose model
     const newProduct = new Product(productData);
 
     newProduct.save()

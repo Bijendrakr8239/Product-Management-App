@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const productID = document.getElementById('productID').value;
 
-        // Send a DELETE request to delete the product
         fetch(`http://localhost:3000/products/${productID}`, {
             method: 'DELETE',
         })

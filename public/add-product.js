@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.status === 201) {
                 alert('Product added successfully');
-                // Redirect to the product listing page or other desired page
                 window.location.href = 'products.html';
             } else {
                 alert('Error adding the product');

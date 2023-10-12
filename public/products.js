@@ -4,22 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const priceInput = document.getElementById('priceInput');
     const ratingInput = document.getElementById('ratingInput');
   
-    // Fetch all products
     fetch('http://localhost:3000/products')
       .then((response) => response.json())
       .then((products) => {
-        // Function to filter products based on user input
         function filterProducts() {
           const showFeatured = featuredCheckbox.checked;
           const maxPrice = parseFloat(priceInput.value) || Infinity;
           const minRating = parseFloat(ratingInput.value) || -1;
-  
-          // Clear the existing product list
+
           while (productList.firstChild) {
             productList.removeChild(productList.firstChild);
           }
   
-          // Display products based on user input
           products.forEach((product) => {
             if ((!showFeatured || (showFeatured && product.featured)) &&
                 product.price <= maxPrice &&
@@ -31,10 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
           });
         }
   
-        // Initial display of products
         filterProducts();
   
-        // Event listeners for user input changes
         featuredCheckbox.addEventListener('change', filterProducts);
         priceInput.addEventListener('input', filterProducts);
         ratingInput.addEventListener('input', filterProducts);
@@ -44,9 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('DOMContentLoaded', () => {
     const productList = document.getElementById('productList');
     
-    // Fetch and display product details as shown in previous examples
     
-    // Handle navigation to add, update, and delete product pages
     const actions = document.getElementById('actions');
     actions.addEventListener('click', (event) => {
         if (event.target.tagName === 'A') {
