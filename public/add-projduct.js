@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 document.addEventListener('DOMContentLoaded', () => {
     const productList = document.getElementById('productList');
     fetch('http://localhost:3000/products')
@@ -22,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(newProduct),
+            console.log(response);
         })
         .then(response => response.json())
         .then(data => {

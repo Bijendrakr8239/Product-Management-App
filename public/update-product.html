@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Product</title>
+</head>
+<body>
+    <h1>Update Product</h1>
+    
+    <form id="updateProductForm">
+        <label for="productID">Product ID:</label>
+        <input type="text" id="productID" required>
+
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName">
+        
+        <label for="productPrice">Price:</label>
+        <input type="number" id="productPrice">
+        
+        <label for="productFeatured">Featured:</label>
+        <input type="checkbox" id="productFeatured">
+        
+        <label for="productRating">Rating:</label>
+        <input type="number" step="0.1" id="productRating">
+        
+        <label for="productCompany">Company:</label>
+        <input type="text" id="productCompany">
+        
+        <button type="submit">Update Product</button>
+    </form>
+
+    <script src="edit-product.js"></script>
+</body>
+</html>

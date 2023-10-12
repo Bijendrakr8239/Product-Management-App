@@ -41,4 +41,19 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .catch((error) => console.error('Error fetching products:', error));
   });
+  document.addEventListener('DOMContentLoaded', () => {
+    const productList = document.getElementById('productList');
+    
+    // Fetch and display product details as shown in previous examples
+    
+    // Handle navigation to add, update, and delete product pages
+    const actions = document.getElementById('actions');
+    actions.addEventListener('click', (event) => {
+        if (event.target.tagName === 'A') {
+            const link = event.target.getAttribute('href');
+            window.location.href = link;
+        }
+    });
+});
+
   

@@ -34,30 +34,32 @@ app.post('/products', (req, res) => {
 
   app.put('/products/:productID', (req, res) => {
     const productID = req.params.productID;
-    const updateData = req.body;
-  
-    Product.findOneAndUpdate({ productID: productID }, updateData, { new: true })
-      .then(updatedProduct => {
-        if (!updatedProduct) {
-          return res.status(404).json({ message: 'Product not found' });
-        }
-        res.json({ message: 'Product updated'});
-      })
-      .catch(err => res.status(400).json(err));
-  });
+    const updatedProduct = req.body;
 
-  app.delete('/products/:productID', (req, res) => {
+    Product.findOneAndUpdate({ productID: productID }, updatedProduct, { new: true })
+        .then((product) => {
+            if (!product) {
+                return res.status(404).json({ message: 'Product not found' });
+            }
+            res.status(200).json(product);
+        })
+        .catch((err) => res.status(400).json(err));
+});
+
+
+app.delete('/products/:productID', (req, res) => {
     const productID = req.params.productID;
-  
+
     Product.findOneAndDelete({ productID: productID })
-      .then((product) => {
-        if (!product) {
-          return res.status(404).json({ message: 'Product not found' });
-        }
-        res.json({ message: 'Product deleted', deletedProduct: product });
-      })
-      .catch((err) => res.status(400).json(err));
-  });
+        .then((product) => {
+            if (!product) {
+                return res.status(404).json({ message: 'Product not found' });
+            }
+            res.status(200).json({ message: 'Product deleted', deletedProduct: product });
+        })
+        .catch((err) => res.status(400).json(err));
+});
+
   
   app.get('/products/featured', (req, res) => {
     Product.find({ featured: true })
