@@ -15,15 +15,24 @@ mongoose.connect('mongodb+srv://Bijendra:12345@cluster0.cnfjai5.mongodb.net/?ret
 
 const Product = require('./models/Product'); 
 app.get('/', (req, res) => {
-  res.send('Welcome to the product management API');
+    res.redirect('/products.html');
 });
 
 app.post('/products', (req, res) => {
-    const newProduct = new Product(req.body);
+    const productData = req.body;
+    
+    // Create a new product using your Mongoose model
+    const newProduct = new Product(productData);
+
     newProduct.save()
-      .then(product => res.json(product))
-      .catch(err => res.status(400).json(err));
-  });
+        .then((product) => {
+            res.status(201).json(product);
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
+});
+
   
   app.get('/products', (req, res) => {
     console.log("getting all data");
